@@ -30,7 +30,7 @@ RUN apk add --no-cache --virtual build-deps alpine-sdk cmake git libusb-dev && \
     rm -r /tmp/src
 
 RUN adduser -D rtl_433
-USER rtl_433
+#USER rtl_433
 
 ENV MQTT_SERVER 10.0.1.22
 ENV MQTT_PORT 1883
