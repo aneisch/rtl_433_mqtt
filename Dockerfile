@@ -1,9 +1,10 @@
 FROM alpine:latest
 
 RUN apk add --no-cache --update \
-    mosquitto-clients openssl curl
+    mosquitto-clients openssl curl \ 
+    libusb-dev
 
-RUN apk add --no-cache --virtual build-deps alpine-sdk gcc build-base cmake git libusb-dev && \
+RUN apk add --no-cache --virtual build-deps alpine-sdk gcc build-base cmake git && \
     mkdir /tmp/src && \
     cd /tmp/src && \
     git clone https://github.com/steve-m/librtlsdr.git && \
