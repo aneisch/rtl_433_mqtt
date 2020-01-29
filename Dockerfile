@@ -1,13 +1,9 @@
 FROM alpine:latest
 
-RUN sed -i 's/http\:\/\/dl-cdn.alpinelinux.org/https\:\/\/alpine.global.ssl.fastly.net/g' /etc/apk/repositories
-
-RUN apk add --update \
+RUN apk add --no-cache --update \
     mosquitto-clients openssl curl \
-    bash build-base gcc cmake git \
-    libusb-dev
 
-RUN apk add --no-cache --virtual build-deps alpine-sdk cmake git libusb-dev && \
+RUN apk add --no-cache --virtual build-deps alpine-sdk gcc build-base cmake git libusb-dev && \
     mkdir /tmp/src && \
     cd /tmp/src && \
     git clone https://github.com/steve-m/librtlsdr.git && \
@@ -37,4 +33,4 @@ ENV MQTT_PORT 1883
 ENV TOPIC sensor/thermopro
 ENV RTL_433_DEVICE 97
     
-ENTRYPOINT rtl_433 -F "mqtt://$MQTT_SERVER:$MQTT_PORT,events=$TOPIC" -R "$RTL_433_DEVICE"
+CMD rtl_433 -F "mqtt://$MQTT_SERVER:$MQTT_PORT,events=$TOPIC" -R "$RTL_433_DEVICE"
