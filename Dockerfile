@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 RUN apk add --no-cache --update \
-    mosquitto-clients openssl curl \
+    mosquitto-clients openssl curl
 
 RUN apk add --no-cache --virtual build-deps alpine-sdk gcc build-base cmake git libusb-dev && \
     mkdir /tmp/src && \
