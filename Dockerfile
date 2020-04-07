@@ -1,19 +1,9 @@
 FROM alpine:latest
 
 RUN apk add --no-cache --update libusb-dev
-
+RUN apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing librtlsdr-dev rtl-sdr
 RUN apk add --no-cache --virtual build-deps alpine-sdk gcc build-base cmake git && \
     mkdir /tmp/src && \
-    cd /tmp/src && \
-    git clone https://github.com/steve-m/librtlsdr.git && \
-    mv librtlsdr rtl-sdr && \
-    mkdir /tmp/src/rtl-sdr/build && \
-    cd /tmp/src/rtl-sdr/build && \
-    cmake ../ -DINSTALL_UDEV_RULES=ON -DDETACH_KERNEL_DRIVER=ON -DCMAKE_INSTALL_PREFIX:PATH=/usr/local && \
-    make && \
-    make install && \
-    chmod +s /usr/local/bin/rtl_* && \
-    cd /tmp/src/ && \
     git clone https://github.com/merbanan/rtl_433 && \
     cd rtl_433/ && \
     mkdir build && \
