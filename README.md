@@ -20,6 +20,8 @@ services:
           - TOPIC=sensor/thermopro
           # 97 = Thermopro https://github.com/merbanan/rtl_433/blob/master/README.md
           - RTL_433_DEVICE=97
+          # Customary, si, or native (default)
+          - UNITS=customary
         restart: 'no'
         devices:
           - '/dev/rtl_433:/dev/bus/usb/003/002'
