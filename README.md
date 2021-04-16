@@ -16,6 +16,6 @@ services:
         devices:
           - '/dev/rtl_433:/dev/bus/usb/003/002'
         volumes:
-          - '/opt/433_mqtt/rtl_433_config.example:/home/rtl_433/.config/rtl_433.conf'
+          - '/opt/433_mqtt/rtl_433_config.example:/etc/rtl_433/rtl_433.conf'
 ```
 
