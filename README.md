@@ -2,7 +2,7 @@
 <a href="https://www.buymeacoffee.com/aneisch" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-black.png" width="150px" height="35px" alt="Buy Me A Coffee" style="height: 35px !important;width: 150px !important;" ></a><br>
 
 ## Usage
-Tweak the rtl_433.config.example to you liking and expose it to the container if you wish to override default settings.
+Tweak the rtl_433.config.example to your liking and expose it to the container if you wish to override default settings.
 
 ### Example docker-compose
 
