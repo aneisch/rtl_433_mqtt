@@ -17,10 +17,4 @@ RUN apk add --no-cache --virtual build-deps alpine-sdk gcc build-base cmake git 
 RUN adduser -D rtl_433
 USER rtl_433
 
-ENV MQTT_SERVER 10.0.1.22
-ENV MQTT_PORT 1883
-ENV TOPIC sensor/thermopro
-ENV RTL_433_DEVICE 97
-ENV UNITS native
-    
-CMD rtl_433 -F "mqtt://$MQTT_SERVER:$MQTT_PORT,events=$TOPIC" -C $UNITS -R "$RTL_433_DEVICE"
+CMD rtl_433
