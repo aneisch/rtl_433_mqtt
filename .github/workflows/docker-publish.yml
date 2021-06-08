@@ -6,6 +6,8 @@ on:
       - master
     paths-ignore:
       - '**/README.md'
+  schedule:
+    - cron: '43 19 15 * *'
 
 env:
   # TODO: Change variable to your image's name.
