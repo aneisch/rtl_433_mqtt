@@ -23,7 +23,12 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Run tests
-        run: docker build . --file Dockerfile
+        run: docker build . --file Dockerfile -t $IMAGE_NAME
+        
+      - name: Assess Vulnerability
+        uses: Azure/container-scan@v0
+        with:
+          image-name: ${{ env.IMAGE_NAME }}
 
   # Push image to GitHub Packages.
   # See also https://docs.docker.com/docker-hub/builds/
@@ -45,11 +50,11 @@ jobs:
         run: docker build . --file Dockerfile --tag $IMAGE_NAME
 
       - name: Log into registry
-        run: echo "${{ secrets.TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
+        run: echo "${{ secrets.TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Push image
         run: |
-          IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
+          IMAGE_ID=ghcr.io/aneisch/${{ env.IMAGE_NAME }}
 
           # Change all uppercase to lowercase
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
