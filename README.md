@@ -11,7 +11,7 @@ version: '3.2'
 services:
     thermopro_mqtt:
         container_name: thermopro_mqtt
-        image: docker.pkg.github.com/aneisch/rtl_433_mqtt/rtl_433_mqtt:latest
+        image: ghcr.io/aneisch/rtl_433_mqtt:latest
         restart: 'no'
         devices:
           - '/dev/rtl_433:/dev/bus/usb/003/002'
