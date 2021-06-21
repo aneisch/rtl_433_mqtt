@@ -12,13 +12,10 @@ on:
 env:
   IMAGE_NAME: rtl_433_mqtt
 
-jobs:
-  build_assses_push:
+jobs:  
+  build_assess_push:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-
+    
     steps:
       - uses: actions/checkout@v2
 
@@ -30,10 +27,10 @@ jobs:
         with:
           image-name: ${{ env.IMAGE_NAME }}
 
-      - name: Log into registry
+      - name: Log into Registry
         run: echo "${{ secrets.TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      - name: Push image
+      - name: Push Image
         run: |
           IMAGE_ID=ghcr.io/aneisch/${{ env.IMAGE_NAME }}
           # Change all uppercase to lowercase
