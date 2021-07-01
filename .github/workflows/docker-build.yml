@@ -7,7 +7,7 @@ on:
     paths-ignore:
       - '**/README.md'
   schedule:
-    - cron: '43 19 15 * *'
+    - cron: '43 19 1,15 * *'
 
 env:
   IMAGE_NAME: rtl_433_mqtt
