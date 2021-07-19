@@ -28,7 +28,7 @@ jobs:
           image-name: ${{ env.IMAGE_NAME }}
 
       - name: Log into Registry
-        run: echo "${{ secrets.TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Push Image
         run: |
