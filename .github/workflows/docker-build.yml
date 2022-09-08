@@ -11,6 +11,8 @@ on:
 
 env:
   IMAGE_NAME: rtl_433_mqtt
+  # See https://github.com/goodwithtech/dockle/issues/188
+  DOCKLE_HOST: "unix:///var/run/docker.sock"
 
 jobs:  
   build_assess_push:
