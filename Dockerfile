@@ -20,3 +20,4 @@ RUN adduser -D rtl_433
 USER rtl_433
 
 CMD rtl_433
+
